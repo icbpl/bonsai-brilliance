@@ -361,34 +361,92 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 bg-white">
+        <div className="container">
+          <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Frequently Asked Questions (FAQ)</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {[
+              {
+                question: "What are the minimum order requirements?",
+                answer: "Minimum order varies by plant type. For bulk landscaping plants, MOQ is 100 units; for bonsai, MOQ is 10 units."
+              },
+              {
+                question: "Do you provide international shipping?",
+                answer: "Yes, we export worldwide. We ensure compliance with international regulations."
+              },
+              {
+                question: "What payment methods do you accept?",
+                answer: "We accept Bank Transfer (TT), Letter of Credit (LC), and PayPal for international transactions."
+              },
+              {
+                question: "How long does shipping take?",
+                answer: "Delivery time depends on the destination. Most shipments take 10-20 business days."
+              },
+              {
+                question: "Do you provide customization services?",
+                answer: "Yes, we source specific plants and bonsai upon request."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-natural-100 p-8 rounded-lg"
+              >
+                <h3 className="text-xl font-semibold mb-4 flex items-start">
+                  <span className="text-2xl mr-3">❓</span>
+                  {faq.question}
+                </h3>
+                <p className="text-natural-900 flex items-start">
+                  <span className="text-2xl mr-3">✔</span>
+                  {faq.answer}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-sage-100">
         <div className="container">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">PT INDO CIPANAS BONSAI</h2>
+            <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Get in Touch</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div>
-                <div className="mb-8">
-                  <h3 className="text-2xl font-semibold mb-4">Office Address</h3>
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-5 h-5 mt-1 text-natural-700" />
-                    <div>
-                      <p className="text-natural-700">Kp Hanjawar, Desa/Kelurahan Cimacan,</p>
-                      <p className="text-natural-700">Kec. Cipanas, Kab. Cianjur,</p>
-                      <p className="text-natural-700">Provinsi Jawa Barat, Indonesia 43253</p>
-                    </div>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-3">
+                  <span className="text-2xl">📍</span>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">PT INDO CIPANAS BONSAI</h3>
+                    <p className="text-natural-900">Kp Hanjawar, Desa Cimacan, Kec. Cipanas, Kab. Cianjur, Jawa Barat, Indonesia 43253</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4">Contact Us</h3>
-                  <div className="space-y-2 text-natural-700">
-                    <p>Phone: 0838-6966-3229</p>
-                    <p>Email: timurbonsai@gmail.com</p>
-                    <p>Business Hours: 9:00 AM–6:00 PM</p>
-                    <p>WhatsApp: Chat Us on WhatsApp</p>
-                  </div>
+
+                <div className="space-y-4 text-natural-900">
+                  <p className="flex items-center"><span className="text-2xl mr-3">📞</span>Phone: +62-838-6966-3229</p>
+                  <p className="flex items-center"><span className="text-2xl mr-3">✉️</span>Email: business@icbplants.com</p>
+                  <p className="flex items-center"><span className="text-2xl mr-3">🕘</span>Business Hours: 9:00 AM – 6:00 PM</p>
+                  <p className="flex items-center"><span className="text-2xl mr-3">💬</span>
+                    <a href="#" className="text-natural-900 hover:text-natural-900 underline">WhatsApp: Chat Us Now</a>
+                  </p>
+                  <p className="flex items-center"><span className="text-2xl mr-3">📷</span>
+                    <a href="https://instagram.com/timurbonsai" className="text-natural-900 hover:text-natural-900 underline">Follow Us: @timurbonsai</a>
+                  </p>
+                </div>
+
+                <div className="space-y-4 mt-8">
+                  <h3 className="text-xl font-semibold">💡 Ready to Order?</h3>
+                  <p className="flex items-center"><span className="text-2xl mr-3">📥</span>
+                    <a href="#" className="text-natural-900 hover:text-natural-900 underline">Request a Quote Now – Click Here</a>
+                  </p>
+                  <p className="flex items-center"><span className="text-2xl mr-3">📄</span>
+                    <a href="/pdf/landscaping_plants_compressed.pdf" className="text-natural-900 hover:text-natural-900 underline">Download Our Catalog</a>
+                  </p>
                 </div>
               </div>
+
               <div className="rounded-lg overflow-hidden">
                 <iframe 
                   src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.451544554483!2d107.0564286!3d-6.710680499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b3003c0b9c57%3A0x383c596b750c6b95!2sIndo%20cipanas%20bonsai!5e0!3m2!1sen!2sid!4v1708440000000!5m2!1sen!2sid`}
@@ -402,15 +460,9 @@ const Index = () => {
                 />
               </div>
             </div>
+            
             <div className="mt-16 text-center">
-              <p className="text-xl text-natural-700 mb-4">Follow Us</p>
-              <div className="space-x-4">
-                <a href="https://instagram.com/timurbonsai" className="text-natural-700 hover:text-natural-900">@timurbonsai</a>
-                <a href="https://facebook.com/indocipanasbonsai" className="text-natural-700 hover:text-natural-900">Indo Cipanas Bonsai</a>
-              </div>
-            </div>
-            <div className="mt-16 text-center">
-              <p className="text-natural-700">Copyright © 2024 Indo Cipanas Bonsai. All Rights Reserved</p>
+              <p className="text-natural-900">Copyright © 2024 Indo Cipanas Bonsai. All Rights Reserved.</p>
             </div>
           </div>
         </div>
