@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Tree, ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -11,7 +11,7 @@ const Index = () => {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/lovable-uploads/e99c79c0-47e0-4698-90fc-0fa3103df0a4.png')",
+            backgroundImage: "url('https://lh5.googleusercontent.com/p/AF1QipNDXnxmDLb6JcbqT70SpWFnkG2T5thvmsBrjuze=s0')",
             backgroundPosition: "center",
             backgroundSize: "cover",
             filter: "brightness(0.8)"
@@ -32,28 +32,49 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
           >
-            Your premier source for exquisite bonsai, elegant landscaping plants, and rare botanical treasures
+            PT Indo Cipanas Bonsai is a premier supplier of high-quality bonsai, rare plants, and landscaping greenery.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex items-center justify-center gap-4 flex-wrap"
           >
             <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white">
-              Explore Our Collection <ArrowRight className="ml-2 h-4 w-4" />
+              Our Products <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+            <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white">
+              WhatsApp Us <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
         </div>
       </section>
 
-      {/* Tradition Section */}
+      {/* About Section */}
       <section className="py-24 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6 text-natural-900">Rooted in Tradition, Growing with Passion</h2>
             <p className="text-lg text-natural-700 leading-relaxed mb-12">
-              Dedicated to fine art bonsai, we've cultivated rare and exquisite plants for over 20 years, infusing each piece with artistry and tradition. Our expertise extends beyond bonsai to premium landscaping solutions and rare botanical specimens.
+              Founded in 2010, Indo Cipanas Bonsai has been shaping nature into living art, specializing in bonsai, rare ornamental plants, and landscaping solutions. With years of expertise, we seamlessly blend tradition and innovation to cultivate plants of exceptional quality, beauty, and longevity.
             </p>
+            <p className="text-lg text-natural-700 leading-relaxed mb-12">
+              Trusted by landscape designers, collectors, and international exporters, our plants have transformed luxury residences, commercial spaces, and gardens worldwide. Clients value not only the superior quality of our plants but also our professionalism, reliability, and meticulous attention to detail—qualities that have made us a preferred supplier for high-end landscaping projects and bonsai exports.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="p-6 bg-natural-100 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Decades of Expertise</h3>
+                <p className="text-natural-700">Our team has years of experience in cultivating and shaping high-quality bonsai and ornamental plants.</p>
+              </div>
+              <div className="p-6 bg-natural-100 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Authentic Craftsmanship</h3>
+                <p className="text-natural-700">Our bonsai are trained with traditional techniques, ensuring natural elegance and character in every tree.</p>
+              </div>
+              <div className="p-6 bg-natural-100 rounded-lg">
+                <h3 className="text-xl font-semibold mb-4">Export-Grade Quality</h3>
+                <p className="text-natural-700">We follow international phytosanitary regulations, making our plants ready for safe global shipment.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -62,21 +83,52 @@ const Index = () => {
       <section className="py-24 bg-sage-100">
         <div className="container">
           <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Premium Ornamental Plants & Bonsai for Export</h2>
+          <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
+            We offer a diverse range of high-quality ornamental plants, from semi-mature bonsai to rare tropical species. Whether for export, landscaping, or collectors, our selection is carefully curated to meet international standards.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
+            {[
+              {
+                title: "Semi-Mature Bonsai",
+                description: "70-80% developed, ideal for export and further cultivation"
+              },
+              {
+                title: "Landscaping & Bulk Plants",
+                description: "Wholesale supply for urban beautification and commercial projects"
+              },
+              {
+                title: "Rare Tropical Plants",
+                description: "Handpicked exotic species sourced from tropical regions"
+              },
+              {
+                title: "Competition-Ready Bonsai",
+                description: "Fully matured bonsai for exhibitions and contests"
+              },
+              {
+                title: "Decorative Plant Pots",
+                description: "High-quality, stylish pots to enhance plant displays"
+              },
+              {
+                title: "Custom Orders & Sourcing",
+                description: "Tailored plant procurement services, connecting buyers with trusted growers and suppliers"
+              }
+            ].map((product, index) => (
               <motion.div
-                key={item}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: item * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="aspect-w-16 aspect-h-9 bg-natural-200">
-                  {/* Add your product images here */}
+                  {/* Add product images here */}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Premium Bonsai Collection</h3>
-                  <p className="text-natural-700">Expertly crafted and nurtured specimens</p>
+                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
+                  <p className="text-natural-700">{product.description}</p>
+                  <Button variant="outline" size="sm" className="mt-4">
+                    Learn More
+                  </Button>
                 </div>
               </motion.div>
             ))}
@@ -88,44 +140,47 @@ const Index = () => {
       <section className="py-24 bg-white">
         <div className="container">
           <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Our Process: From Cultivation to Delivery</h2>
+          <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
+            Every step matters, from seedling to your space
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                step: 1,
-                title: "Careful Selection",
-                description: "Each plant is meticulously chosen for its unique characteristics and potential."
+                step: "1️⃣",
+                title: "Careful Selection & Growth",
+                description: "We start with the finest seedlings and nurture them for years to develop strong, healthy plants."
               },
               {
-                step: 2,
-                title: "Expert Cultivation",
-                description: "Our specialists nurture each specimen with precision and care."
+                step: "2️⃣",
+                title: "Shaping & Refinement",
+                description: "Using precise techniques, we train and style our bonsai to enhance their natural elegance and character."
               },
               {
-                step: 3,
-                title: "Quality Assurance",
-                description: "Rigorous inspection ensures only the finest specimens are selected for export."
+                step: "3️⃣",
+                title: "Health & Quality Inspection",
+                description: "Every plant undergoes rigorous checks to ensure it is free from pests and diseases."
               },
               {
-                step: 4,
-                title: "Professional Packaging",
-                description: "Secure, climate-controlled packaging for safe international transport."
+                step: "4️⃣",
+                title: "Secure Packaging",
+                description: "Each bonsai is carefully wrapped and protected to maintain its structure and health during transport."
               },
               {
-                step: 5,
-                title: "Export Documentation",
-                description: "Complete handling of all necessary export permits and paperwork."
+                step: "5️⃣",
+                title: "Fast & Safe Delivery",
+                description: "We partner with trusted logistics providers to ensure timely delivery, both domestically and internationally."
               },
               {
-                step: 6,
-                title: "Global Logistics",
-                description: "Reliable shipping partners ensure timely delivery worldwide."
+                step: "6️⃣",
+                title: "Aftercare Support",
+                description: "We provide detailed care instructions and expert guidance to help you maintain the beauty of your bonsai."
               }
             ].map((process) => (
               <motion.div
                 key={process.step}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: process.step * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
                 className="bg-natural-100 p-8 rounded-lg"
               >
                 <div className="flex items-center mb-4">
@@ -149,33 +204,48 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
                 <div className="mb-8">
-                  <h3 className="text-2xl font-semibold mb-4">Office Jakarta</h3>
+                  <h3 className="text-2xl font-semibold mb-4">Office Address</h3>
                   <div className="flex items-start space-x-3">
                     <MapPin className="w-5 h-5 mt-1 text-natural-700" />
                     <div>
-                      <p className="text-natural-700">Jl. Pluit Karang Karya 2 Blok A No.6</p>
-                      <p className="text-natural-700">Pluit - Jakarta Utara</p>
-                      <p className="text-natural-700">Indonesia</p>
+                      <p className="text-natural-700">Kp Hanjawar, Desa/Kelurahan Cimacan,</p>
+                      <p className="text-natural-700">Kec. Cipanas, Kab. Cianjur,</p>
+                      <p className="text-natural-700">Provinsi Jawa Barat, Indonesia 43253</p>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">Office Cipanas</h3>
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="w-5 h-5 mt-1 text-natural-700" />
-                    <div>
-                      <p className="text-natural-700">Jl. Sindanglaya, Kp Pasir Muncang RT 01/05</p>
-                      <p className="text-natural-700">Ds. Sindanglaya - Cipanas</p>
-                      <p className="text-natural-700">Cianjur - Jawa Barat</p>
-                      <p className="text-natural-700">Indonesia</p>
-                    </div>
+                  <h3 className="text-2xl font-semibold mb-4">Contact Us</h3>
+                  <div className="space-y-2 text-natural-700">
+                    <p>Phone: 0838-6966-3229</p>
+                    <p>Email: timurbonsai@gmail.com</p>
+                    <p>Business Hours: 9:00 AM–6:00 PM</p>
+                    <p>WhatsApp: Chat Us on WhatsApp</p>
                   </div>
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden">
-                {/* Add your map component here */}
-                <div className="bg-natural-200 w-full h-[400px]"></div>
+                <iframe 
+                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.451544554483!2d107.0564286!3d-6.710680499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69b3003c0b9c57%3A0x383c596b750c6b95!2sIndo%20cipanas%20bonsai!5e0!3m2!1sen!2sid!4v1708440000000!5m2!1sen!2sid`}
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-lg"
+                />
               </div>
+            </div>
+            <div className="mt-16 text-center">
+              <p className="text-xl text-natural-700 mb-4">Follow Us</p>
+              <div className="space-x-4">
+                <a href="https://instagram.com/timurbonsai" className="text-natural-700 hover:text-natural-900">@timurbonsai</a>
+                <a href="https://facebook.com/indocipanasbonsai" className="text-natural-700 hover:text-natural-900">Indo Cipanas Bonsai</a>
+              </div>
+            </div>
+            <div className="mt-16 text-center">
+              <p className="text-natural-700">Copyright © 2024 Indo Cipanas Bonsai. All Rights Reserved</p>
             </div>
           </div>
         </div>
