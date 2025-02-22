@@ -1,11 +1,73 @@
-
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-natural-100">
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="text-xl font-bold text-natural-900">Indo Cipanas Bonsai</div>
+            
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden p-2"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+
+            {/* Desktop menu */}
+            <div className="hidden md:flex space-x-8">
+              {["About", "Products", "Why Us", "Process", "Testimonials", "Contact"].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                  className="text-natural-700 hover:text-natural-900 transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile menu */}
+          {isMenuOpen && (
+            <div className="md:hidden py-4 border-t">
+              <div className="flex flex-col space-y-4">
+                {["About", "Products", "Why Us", "Process", "Testimonials", "Contact"].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                    className="text-natural-700 hover:text-natural-900 transition-colors"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
@@ -51,7 +113,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-white">
+      <section id="about" className="py-24 bg-white">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6 text-natural-900">Rooted in Tradition, Growing with Passion</h2>
@@ -80,7 +142,7 @@ const Index = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-24 bg-sage-100">
+      <section id="products" className="py-24 bg-sage-100">
         <div className="container">
           <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Premium Ornamental Plants & Bonsai for Export</h2>
           <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
@@ -136,8 +198,65 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section id="why-us" className="py-24 bg-white">
+        <div className="container">
+          <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Why Choose Indo Cipanas Bonsai?</h2>
+          <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
+            Not all bonsai and ornamental plants are created equal. Here's what makes Indo Cipanas Bonsai the top choice for collectors, landscapers, and exporters worldwide.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Decades of Expertise",
+                description: "Our team has years of experience in cultivating and shaping high-quality bonsai and ornamental plants."
+              },
+              {
+                title: "Handpicked Selection",
+                description: "We carefully choose every plant, ensuring it meets strict standards in aesthetics, health, and longevity."
+              },
+              {
+                title: "Authentic Craftsmanship",
+                description: "Our bonsai are trained with traditional techniques, ensuring natural elegance and character in every tree."
+              },
+              {
+                title: "Export-Grade Quality",
+                description: "We follow international phytosanitary regulations, making our plants ready for safe global shipment."
+              },
+              {
+                title: "Large-Scale & Custom Orders",
+                description: "Whether for personal collections, landscaping projects, or bulk exports, we accommodate all requests."
+              },
+              {
+                title: "Sustainable Growing Practices",
+                description: "We implement eco-friendly techniques that promote plant health while preserving the environment."
+              },
+              {
+                title: "Dedicated Customer Support",
+                description: "From selection to aftercare, our team ensures you receive the best advice and guidance."
+              },
+              {
+                title: "Wide Variety of Species",
+                description: "We offer a diverse range of bonsai and ornamental plants to suit different styles and preferences."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-natural-100 p-6 rounded-lg"
+              >
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-natural-700">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Process Section */}
-      <section className="py-24 bg-white">
+      <section id="process" className="py-24 bg-sage-100">
         <div className="container">
           <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Our Process: From Cultivation to Delivery</h2>
           <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
@@ -196,8 +315,54 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 bg-white">
+        <div className="container">
+          <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Stories from Our Customers</h2>
+          <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
+            Trusted by businesses, landscapers, collectors, and bonsai enthusiasts worldwide for our exceptional quality, reliability, and commitment to excellence.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-natural-100 p-8 rounded-lg"
+            >
+              <p className="text-natural-700 italic mb-6">
+                "We've worked with Indo Cipanas Bonsai on a previous project for our landscaping plant supply, and we couldn't be happier with the results. The plants were of excellent quality, and their team was professional and reliable throughout the process. It was a great experience, and we highly recommend them for anyone looking for quality landscaping plants."
+              </p>
+              <div>
+                <h4 className="font-semibold">Puri Botanical Residence</h4>
+                <p className="text-natural-600">Landscape Client</p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-natural-100 p-8 rounded-lg"
+            >
+              <p className="text-natural-700 italic mb-6">
+                "I've been sourcing bonsai from Indo Cipanas Bonsai for my exports to Europe, and I'm really happy with their quality. They offer a great variety of species, which makes it much easier for me to meet my clients' needs. The pricing is also reasonable, and the whole process has been smooth. Definitely a supplier I can rely on."
+              </p>
+              <div>
+                <h4 className="font-semibold">Rahmad Alsaubar</h4>
+                <p className="text-natural-600">Export Client</p>
+              </div>
+            </motion.div>
+          </div>
+          <div className="mt-16 text-center">
+            <h3 className="text-2xl font-semibold mb-4">🌟 Committed to Customer Satisfaction</h3>
+            <p className="text-natural-700 max-w-3xl mx-auto">
+              At Indo Cipanas Bonsai, we take pride in building long-term relationships with our clients. Whether you are a landscaper, a bonsai collector, or an exporter, we guarantee the highest quality plants, smooth transactions, and dedicated customer support.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section className="py-24 bg-sage-100">
+      <section id="contact" className="py-24 bg-sage-100">
         <div className="container">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">PT INDO CIPANAS BONSAI</h2>
