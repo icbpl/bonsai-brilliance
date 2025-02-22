@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -76,15 +76,15 @@ const Index = () => {
             backgroundImage: "url('https://lh5.googleusercontent.com/p/AF1QipNDXnxmDLb6JcbqT70SpWFnkG2T5thvmsBrjuze=s0')",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            filter: "brightness(0.8)"
+            filter: "brightness(0.7)"
           }}
         />
-        <div className="container relative z-10 text-center text-white">
+        <div className="container relative z-10 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="hero-heading"
           >
             Preserving Nature, Crafting Art: Bringing Bonsai to Life
           </motion.h1>
@@ -92,7 +92,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto"
+            className="hero-description"
           >
             PT Indo Cipanas Bonsai is a premier supplier of high-quality bonsai, rare plants, and landscaping greenery.
           </motion.p>
@@ -100,29 +100,48 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center justify-center gap-4 flex-wrap"
+            className="flex items-center justify-center gap-6 flex-wrap"
           >
-            <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white">
-              Our Products <ArrowRight className="ml-2 h-4 w-4" />
+            <Button 
+              size="lg" 
+              className="cta-button cta-primary"
+              onClick={() => scrollToSection('products')}
+            >
+              Our Products <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button variant="outline" size="lg" className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white">
-              WhatsApp Us <ArrowRight className="ml-2 h-4 w-4" />
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="cta-button cta-secondary"
+              onClick={() => window.location.href = "https://wa.me/628386966229"}
+            >
+              WhatsApp Us <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
         </div>
+        <motion.div 
+          className="scroll-arrow"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <ChevronDown className="h-8 w-8 text-white" />
+        </motion.div>
       </section>
 
       {/* About Section */}
       <section id="about" className="py-24 bg-white">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6 text-natural-900">Rooted in Tradition, Growing with Passion</h2>
-            <p className="text-lg text-natural-700 leading-relaxed mb-12">
-              Founded in 2010, Indo Cipanas Bonsai has been shaping nature into living art, specializing in bonsai, rare ornamental plants, and landscaping solutions. With years of expertise, we seamlessly blend tradition and innovation to cultivate plants of exceptional quality, beauty, and longevity.
-            </p>
-            <p className="text-lg text-natural-700 leading-relaxed mb-12">
-              Trusted by landscape designers, collectors, and international exporters, our plants have transformed luxury residences, commercial spaces, and gardens worldwide. Clients value not only the superior quality of our plants but also our professionalism, reliability, and meticulous attention to detail—qualities that have made us a preferred supplier for high-end landscaping projects and bonsai exports.
-            </p>
+            <h2 className="text-4xl font-bold mb-8 text-natural-900">Rooted in Tradition, Growing with Passion</h2>
+            <div className="space-y-8">
+              <p className="text-lg text-content">
+                Founded in 2010, Indo Cipanas Bonsai has been shaping nature into living art, specializing in bonsai, rare ornamental plants, and landscaping solutions. With years of expertise, we seamlessly blend tradition and innovation to cultivate plants of exceptional quality, beauty, and longevity.
+              </p>
+              <p className="text-lg text-content">
+                Trusted by landscape designers, collectors, and international exporters, our plants have transformed luxury residences, commercial spaces, and gardens worldwide.
+              </p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="p-6 bg-natural-100 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">Decades of Expertise</h3>
@@ -467,6 +486,34 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Sticky CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg transform translate-y-full transition-transform duration-300 hover:translate-y-0">
+        <div className="container mx-auto py-4">
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-natural-900 font-semibold">
+              Ready to start your bonsai journey?
+            </div>
+            <div className="flex gap-4">
+              <Button 
+                size="lg" 
+                className="cta-button cta-primary"
+                onClick={() => scrollToSection('contact')}
+              >
+                Contact Us <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                className="cta-button cta-secondary hidden md:flex"
+                onClick={() => window.location.href = "https://wa.me/628386966229"}
+              >
+                WhatsApp Us <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

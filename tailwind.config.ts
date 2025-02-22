@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -28,8 +27,8 @@ export default {
           500: "#B3A591",
           600: "#A2917B",
           700: "#917E65",
-          800: "#806A4F",
-          900: "#6F5739"
+          800: "#6F5739",
+          900: "#4A3B26"
         },
         sage: {
           100: "#F2F4F0",
@@ -38,9 +37,9 @@ export default {
           400: "#CBD3C3",
           500: "#BEC8B4",
           600: "#B1BDA5",
-          700: "#A4B296",
-          800: "#97A787",
-          900: "#8A9C78"
+          700: "#8A9C78",
+          800: "#6B7B5C",
+          900: "#4C5741"
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -89,11 +88,22 @@ export default {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "fade-up": {
+          "0%": { 
+            opacity: "0",
+            transform: "translateY(20px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)"
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         fadeIn: "fadeIn 0.5s ease-out forwards",
+        "fade-up": "fade-up 0.8s ease-out forwards"
       },
     },
   },
