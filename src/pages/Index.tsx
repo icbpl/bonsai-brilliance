@@ -1,10 +1,33 @@
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const { scrollYProgress } = useScroll();
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateScroll = () => {
+      const percent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      setScrollProgress(percent);
+      
+      // Update active section
+      const sections = ["about", "products", "why-us", "process", "testimonials", "contact"];
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section);
+        if (element && window.scrollY >= element.offsetTop - 300) {
+          setActiveSection(section);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", updateScroll);
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,8 +41,37 @@ const Index = () => {
     setIsMenuOpen(false);
   };
 
+  const sections = [
+    { id: "about", label: "About" },
+    { id: "products", label: "Products" },
+    { id: "why-us", label: "Why Us" },
+    { id: "process", label: "Process" },
+    { id: "testimonials", label: "Testimonials" },
+    { id: "contact", label: "Contact" }
+  ];
+
   return (
     <div className="min-h-screen bg-natural-100">
+      {/* Scroll Progress Indicator */}
+      <div className="scroll-progress-container">
+        <div 
+          className="scroll-progress-bar"
+          style={{ "--scroll-percent": `${scrollProgress}%` } as React.CSSProperties}
+        />
+      </div>
+
+      {/* Navigation Dots */}
+      <div className="nav-indicator">
+        {sections.map((section) => (
+          <div
+            key={section.id}
+            className={`nav-dot ${activeSection === section.id ? 'active' : ''}`}
+            onClick={() => scrollToSection(section.id)}
+            title={section.label}
+          />
+        ))}
+      </div>
+
       {/* Navigation */}
       <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-4">
@@ -76,7 +128,7 @@ const Index = () => {
             backgroundImage: "url('https://lh5.googleusercontent.com/p/AF1QipNDXnxmDLb6JcbqT70SpWFnkG2T5thvmsBrjuze=s0')",
             backgroundPosition: "center",
             backgroundSize: "cover",
-            filter: "brightness(0.7)"
+            filter: "brightness(0.65)"
           }}
         />
         <div className="container relative z-10 text-center">
@@ -432,7 +484,17 @@ const Index = () => {
       <section id="contact" className="py-24 bg-sage-100">
         <div className="container">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Get in Touch</h2>
+            <h2 className="text-4xl font-bold text-center mb-8 text-natural-900">Get in Touch</h2>
+            <div className="text-center mb-12">
+              <p className="text-2xl font-semibold text-natural-900 mb-4">
+                "Where Passion for Plants Thrives and Greenery Finds Its Home"
+              </p>
+              <p className="text-lg text-natural-900 max-w-3xl mx-auto mb-8">
+                We're always ready to help you grow your collection, design stunning landscapes, and bring nature closer to your everyday life.
+                From large-scale bonsai projects to rare ornamental plants, let's make your green space a reflection of artistry and care.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-6">
                 <div className="flex items-start space-x-3">
