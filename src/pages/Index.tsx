@@ -2,6 +2,7 @@ import { motion, useScroll } from "framer-motion";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+import Schemas from "@/components/Schemas";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -546,8 +547,13 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="mt-16 text-center">
-              <p className="text-natural-900">Copyright © 2024 Indo Cipanas Bonsai. All Rights Reserved.</p>
+            <div className="mt-16 text-center space-y-4">
+              <div className="max-w-3xl mx-auto px-4 py-6 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm">
+                <p className="text-natural-700 text-sm">
+                  Indo Cipanas Bonsai is a legally registered company in Indonesia, officially recognized under the Indonesian business registry with NIB 212240016669. We operate in full compliance with national regulations, ensuring reliable and professional service for our clients worldwide.
+                </p>
+              </div>
+              <p className="text-natural-600">Copyright © 2024 Indo Cipanas Bonsai. All Rights Reserved.</p>
             </div>
           </div>
         </div>
@@ -580,6 +586,9 @@ const Index = () => {
           </div>
         </div>
       </div>
+
+      {/* Schema Data */}
+      <Schemas />
     </div>
   );
 };
