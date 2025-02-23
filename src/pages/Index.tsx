@@ -6,13 +6,14 @@ import { useState, useEffect } from "react";
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const { scrollYProgress } = useScroll();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const updateScroll = () => {
-      const percent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      setScrollProgress(percent);
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      setScrollProgress(scrolled);
       
       // Update active section
       const sections = ["about", "products", "why-us", "process", "testimonials", "contact"];
@@ -26,6 +27,7 @@ const Index = () => {
     };
 
     window.addEventListener("scroll", updateScroll);
+    console.log("Scroll progress:", scrollProgress); // Debug log
     return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
@@ -56,7 +58,9 @@ const Index = () => {
       <div className="scroll-progress-container">
         <div 
           className="scroll-progress-bar"
-          style={{ "--scroll-percent": `${scrollProgress}%` } as React.CSSProperties}
+          style={{ 
+            "--scroll-percent": `${scrollProgress}%` 
+          } as React.CSSProperties}
         />
       </div>
 
@@ -89,13 +93,13 @@ const Index = () => {
 
             {/* Desktop menu */}
             <div className="hidden md:flex space-x-8">
-              {["About", "Products", "Why Us", "Process", "Testimonials", "Contact"].map((item) => (
+              {sections.map((item) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
                   className="text-natural-700 hover:text-natural-900 transition-colors"
                 >
-                  {item}
+                  {item.label}
                 </button>
               ))}
             </div>
@@ -105,13 +109,13 @@ const Index = () => {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t">
               <div className="flex flex-col space-y-4">
-                {["About", "Products", "Why Us", "Process", "Testimonials", "Contact"].map((item) => (
+                {sections.map((item) => (
                   <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
                     className="text-natural-700 hover:text-natural-900 transition-colors"
                   >
-                    {item}
+                    {item.label}
                   </button>
                 ))}
               </div>
