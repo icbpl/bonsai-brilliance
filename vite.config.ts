@@ -5,14 +5,18 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "/bonsai-brilliance/",  // ✅ REQUIRED for GitHub Pages (use your repo name)
   server: {
-    host: "::",
+    host: "::",  // IPv6 support
     port: 8080,
+  },
+  build: {
+    outDir: "dist",  // ✅ Make sure GitHub Pages serves from 'dist'
+    emptyOutDir: true,
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
