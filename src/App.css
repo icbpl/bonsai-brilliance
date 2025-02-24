@@ -77,3 +77,20 @@
 .text-content-light {
   @apply text-natural-800 leading-relaxed;
 }
+
+/* Product Cards */
+.product-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+}
+
+.product-card-content {
+  @apply relative z-10 p-6;
+}
+
+.product-image-container {
+  @apply relative overflow-hidden aspect-w-16 aspect-h-9;
+}
+
+.product-image {
+  @apply absolute inset-0 bg-cover bg-center transform transition-transform duration-500 group-hover:scale-110;
+}

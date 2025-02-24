@@ -220,35 +220,47 @@ const Index = () => {
       {/* Products Section */}
       <section id="products" className="py-24 bg-sage-100">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-16 text-natural-900">Premium Ornamental Plants & Bonsai for Export</h2>
+          <h2 className="text-4xl font-bold text-center mb-8 text-natural-900">Premium Ornamental Plants & Bonsai for Export</h2>
           <p className="text-lg text-center text-natural-700 max-w-3xl mx-auto mb-16">
-            We offer a diverse range of high-quality ornamental plants, from semi-mature bonsai to rare tropical species. Whether for export, landscaping, or collectors, our selection is carefully curated to meet international standards.
+            Buy export-quality ornamental plants, bonsai, and rare tropical species. We supply high-demand plants for landscapers, nurseries, and collectors worldwide. Bulk and wholesale orders are available with international shipping.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Semi-Mature Bonsai",
-                description: "70-80% developed, ideal for export and further cultivation"
+                title: "Semi-Mature Bonsai for Sale",
+                description: "Order semi-mature bonsai (70-80% developed), ideal for export, nurseries, and further cultivation. Our bonsai are carefully trained for years to ensure strong roots, artistic shaping, and high survival rates. Available in bulk for international buyers.",
+                image: "/assets/export-ready.jpg",
+                catalog: "/pdf/semi.pdf"
               },
               {
-                title: "Landscaping & Bulk Plants",
-                description: "Wholesale supply for urban beautification and commercial projects"
+                title: "Wholesale Landscaping & Bulk Plants",
+                description: "Buy premium landscaping plants in bulk for urban beautification, resorts, and commercial spaces. Our plants are grown using sustainable methods and are carefully selected for resilience in various climates. We offer large-scale supply with full export certification.",
+                image: "/assets/landscaping.jpg",
+                catalog: "/pdf/landscaping.pdf"
               },
               {
-                title: "Rare Tropical Plants",
-                description: "Handpicked exotic species sourced from tropical regions"
+                title: "Rare Tropical Plants Supplier",
+                description: "Discover and order rare tropical plants, including exotic variegated species, sourced from Asia's rich biodiversity. Perfect for collectors, nurseries, and specialty plant stores. We provide direct supply with professional packaging and export compliance.",
+                image: "/assets/variegated.jpg",
+                catalog: "/pdf/tropical.pdf"
               },
               {
-                title: "Competition-Ready Bonsai",
-                description: "Fully matured bonsai for exhibitions and contests"
+                title: "Competition-Ready Bonsai for Sale",
+                description: "Fully matured, exhibition-grade bonsai, crafted with precision for competitions and high-end collections. Each tree is shaped using traditional techniques and nurtured for years to achieve aesthetic perfection. Limited stock available for direct purchase.",
+                image: "/assets/contest-ready.jpg",
+                catalog: "/pdf/contest.pdf"
               },
               {
-                title: "Decorative Plant Pots",
-                description: "High-quality, stylish pots to enhance plant displays"
+                title: "Decorative Plant Pots Supplier",
+                description: "Enhance your plant displays with stylish, durable pots designed for bonsai and ornamental plants. We offer a variety of premium materials, including ceramic, clay, and custom designs. Wholesale and retail orders are available for nurseries, interior designers, and retailers.",
+                image: "/assets/pots.jpg",
+                catalog: "/pdf/pot.pdf"
               },
               {
-                title: "Custom Orders & Sourcing",
-                description: "Tailored plant procurement services, connecting buyers with trusted growers and suppliers"
+                title: "Custom Plant Sourcing & Orders",
+                description: "Looking for specific plants? We provide tailored procurement services, connecting buyers with trusted growers and exporters. Whether you need a rare species or a large bulk order, we ensure quality and smooth international delivery.",
+                image: "/assets/pots.jpg",
+                catalog: ""
               }
             ].map((product, index) => (
               <motion.div
@@ -256,17 +268,42 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+                className="group relative bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-w-16 aspect-h-9 bg-natural-200">
-                  {/* Add product images here */}
+                <div 
+                  className="aspect-w-16 aspect-h-9 relative overflow-hidden"
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-500"
+                    style={{
+                      backgroundImage: `url(${product.image})`,
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-                  <p className="text-natural-700">{product.description}</p>
-                  <Button variant="outline" size="sm" className="mt-4">
-                    Learn More
-                  </Button>
+                <div className="p-6 relative z-10">
+                  <h3 className="text-xl font-semibold mb-3 text-natural-900">{product.title}</h3>
+                  <p className="text-natural-700 mb-4">{product.description}</p>
+                  <div className="flex gap-3">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="hover:bg-natural-900 hover:text-white transition-colors"
+                      onClick={() => scrollToSection('contact')}
+                    >
+                      Inquire Now
+                    </Button>
+                    {product.catalog && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="hover:bg-natural-900 hover:text-white transition-colors"
+                        onClick={() => window.open(product.catalog, '_blank')}
+                      >
+                        View Catalog
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
