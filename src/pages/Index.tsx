@@ -143,7 +143,7 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="hero-heading"
           >
-            Trusted Bonsai Supplier & Exporter – Wholesale & Landscaping Plants
+            Preserving Nature, Crafting Art: Bringing Bonsai to Life
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ const Index = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-description"
           >
-            Indo Cipanas Bonsai is a leading bonsai supplier and exporter specializing in wholesale bonsai trees, rare ornamental plants, and large-scale landscaping greenery. We provide export-grade bonsai with global shipping compliance. Trusted by landscapers, collectors, and businesses worldwide.
+            PT Indo Cipanas Bonsai is a premier supplier of high-quality bonsai, rare plants, and landscaping greenery.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -164,7 +164,7 @@ const Index = () => {
               className="cta-button cta-primary"
               onClick={() => scrollToSection('products')}
             >
-              Explore Our Bonsai Collection <ArrowRight className="ml-2 h-5 w-5" />
+              Our Products <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
               variant="secondary" 
@@ -172,7 +172,7 @@ const Index = () => {
               className="cta-button cta-secondary"
               onClick={() => window.location.href = "https://wa.me/628386966229"}
             >
-              Get a Free Quote on Wholesale Orders <ArrowRight className="ml-2 h-5 w-5" />
+              WhatsApp Us <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
         </div>
@@ -631,5 +631,3 @@ const Index = () => {
 };
 
 export default Index;
-
-// ... keep existing CSS file content
